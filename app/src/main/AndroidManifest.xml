@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.mzcode"> <!-- 必须与代码包名一致 -->
+
+    <!-- 1. SSH连接核心权限： INTERNET（网络访问权限，必加） -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- 2. 可选：适配Android 10+后台网络（若需后台保持SSH连接可加） -->
+    <uses-permission
+        android:name="android.permission.ACCESS_NETWORK_STATE"
+        android:maxSdkVersion="30" /> <!-- 仅在旧版本生效，31+需用其他方式 -->
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Mzcode"
+        tools:targetApi="31">
+
+        <!-- 3. 启动Activity声明（核心！否则应用无法启动） -->
+        <!-- 对应你Java代码中的 MainActivity 全路径 -->
+        <activity
+            android:name=".Main.MainActivity"
+            android:exported="true"
+        android:hardwareAccelerated="true"
+        android:windowSoftInputMode="adjustResize|stateVisible">
+
+        <!-- 4. 配置为应用启动入口 -->
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+
+</application>
+
+    </manifest>
